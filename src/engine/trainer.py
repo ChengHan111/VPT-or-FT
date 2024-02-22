@@ -855,12 +855,13 @@ class Trainer():
         
         def reshape_transform(tensor, height=14, width=14):
             # print('In reshape_transform', tensor.shape) # [batch size, 197 ,768]
-            # tensor = tensor[:, 0:197, :] # prompt tuning will return value not equal to 197 (with prompt length), reflect in error
-            tensor = tensor[:, 11:, :]
-            result = tensor[:, :, :].reshape(tensor.size(0),
+            # print('In reshape_transform', tensor.shape) In reshape_transform torch.Size([64, 297, 768])
+            # tensor = tensor[:, 201:, :] # prompt tuning will return value not equal to 197 (with prompt length), reflect in error
+            # tensor = tensor[:, 11:, :]
+            # result = tensor[:, :, :].reshape(tensor.size(0),
+            #                                 height, width, tensor.size(2))
+            result = tensor[:, 1:, :].reshape(tensor.size(0),
                                             height, width, tensor.size(2))
-            # result = tensor[:, 1:, :].reshape(tensor.size(0),
-                                            # height, width, tensor.size(2))
 
             # Bring the channels to the first dimension,
             # like in CNNs.
@@ -893,7 +894,7 @@ class Trainer():
         elif integrated_method == 'saliency':
             method = Saliency(model)
         
-        elif integrated_method == 'pytorch_gradcam': # under construction
+        elif integrated_method == 'pytorch_gradcam': # default for visualization gradcam
             method = GradCAM(model=model,
                             target_layers=[model.enc.transformer.encoder.layer[11].attention_norm], # [model.enc.transformer.encoder.encoder_norm],
                             use_cuda=True,

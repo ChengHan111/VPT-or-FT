@@ -209,3 +209,10 @@ train_save.py
 /origin_mixed
 /plot_functions
 /pt_origin_val
+/DMLAB_vis_prompt_val
+/Retino_vis_finetune_val
+/Retino_vis_prompt_val
+/SmallNorbEVA_vis_prompt_val
+/plot_functions
+
+/IG_functions
