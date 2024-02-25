@@ -6,7 +6,7 @@ This repository contains the official PyTorch implementation for Facing the Elep
 As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
 
 <div align="center">
-  <img src="./imgs/Task_dimensions.JPG" width="70%">
+  <img src="./imgs/Task_dimensions.JPG" width="50%">
 </div>
 <p align="center">
   Figure 1: VPT is identified to be preferable in 3 out of 4 transfer learning scenarios when downstream data is limited.
@@ -50,7 +50,7 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 
 ### Key configs:
 
-- 🔥VPT related:
+- VPT related:
   - MODEL.PROMPT.NUM_TOKENS: prompt length
   - MODEL.PROMPT.DEEP: deep or shallow prompt
 - Fine-tuning method specification:
@@ -74,8 +74,6 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 
 ### Datasets preperation:
 
-See Table 8 in the Appendix for dataset details. 
-
 - Fine-Grained Visual Classification tasks (FGVC): The datasets can be downloaded following the official links. We split the training data if the public validation set is not available. The splitted dataset can be found here: [Dropbox](https://cornell.box.com/v/vptfgvcsplits), [Google Drive](https://drive.google.com/drive/folders/1mnvxTkYxmOr2W9QjcgS64UBpoJ4UmKaM?usp=sharing). 
 
   - [CUB200 2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)
@@ -93,9 +91,6 @@ See Table 8 in the Appendix for dataset details.
 ### Pre-trained model preperation
 
 Download and place the pre-trained Transformer-based backbones to `MODEL.MODEL_ROOT` (ConvNeXt-Base and ResNet50 would be automatically downloaded via the links in the code). Note that you also need to rename the downloaded ViT-B/16 ckpt from `ViT-B_16.npz` to `imagenet21k_ViT-B_16.npz`.
-
-See Table 9 in the Appendix for more details about pre-trained backbones.
-
 
 <table><tbody>
 <!-- START TABLE -->
