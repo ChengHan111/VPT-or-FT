@@ -132,13 +132,9 @@ Download and place the pre-trained Transformer-based backbones to `MODEL.MODEL_R
 </tr>
 </tbody></table>
 
-### Examples for training and aggregating results
-
-See [`demo.ipynb`](https://github.com/KMnP/vpt/blob/main/demo.ipynb) for how to use this repo.
-
 ### Hyperparameters for experiments in paper
 
-The hyperparameter values used (prompt length for VPT / reduction rate for Adapters, base learning rate, weight decay values) in Table 1-2, Fig. 3-4, Table 4-5 can be found here: [Dropbox](https://cornell.box.com/s/lv10kptgyrm8uxb6v6ctugrhao24rs2z) / [Google Drive](https://drive.google.com/drive/folders/1ldhqkXelHDXq4bG7qpKn5YEfU6sRehJH?usp=sharing). 
+The hyperparameter values used (prompt length for VPT / reduction rate for Adapters, base learning rate, weight decay values) are strictly followed the ones in VPT Table 1-2, Fig. 3-4, Table 4-5, which can be found here [Dropbox](https://cornell.box.com/s/lv10kptgyrm8uxb6v6ctugrhao24rs2z) / [Google Drive](https://drive.google.com/drive/folders/1ldhqkXelHDXq4bG7qpKn5YEfU6sRehJH?usp=sharing). We express our gratitude to the authors of VPT for providing the detailed hyperparameters.
 
 ## Citation
 
