@@ -6,7 +6,7 @@ This repository contains the official PyTorch implementation for Facing the Elep
 As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
 
 <div align="center">
-  <img src="./imgs/Task_dimensions.PNG">
+  <img src="./imgs/Task_dimensions.JPG">
 </div>
 <p align="center">
   Figure 1: VPT is identified to be preferable in 3 out of 4 transfer learning scenarios when downstream data is limited.
@@ -16,7 +16,7 @@ As the scale of vision models continues to grow, the emergence of Visual Prompt 
 
 See `env_setup.sh`
 
-Note that you need to add a file (which is put in timm_added folder) to timm/models with path `anaconda3/envs/[envs-name]/lib/python3.7/site-packages/timm/models`, and init it in `__init__.py` by adding `from .vision_transformer_changeVK import *`.
+I build the code for this work based on our previous work -- [E2VPT](https://github.com/ChengHan111/E2VPT). You will need to add a file (which is put in timm_added folder) to timm/models with path `anaconda3/envs/[envs-name]/lib/python3.7/site-packages/timm/models`, and init it in `__init__.py` by adding `from .vision_transformer_changeVK import *`. It is not used for this work, but I keep it here for future reference.
 
 ## Structure of the this repo (key files are marked with 👉):
 
