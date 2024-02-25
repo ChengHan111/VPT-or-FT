@@ -6,10 +6,10 @@ This repository contains the official PyTorch implementation for Facing the Elep
 As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
 
 <div align="center">
-  <img src="./imgs/figure2_png.PNG">
+  <img src="./imgs/Task_dimensions.PNG">
 </div>
 <p align="center">
-  Figure 1: Overview of our E2VPT framework. Under the pretrain-then-finetune paradigm, only the prompts in the transformer's input and backbone, are updated during the fine-tuning process, while all other components remain frozen. We further introduce pruning at two levels of granularity (i.e., token-wise and segment-wise) in (d) to eliminate unfavorable input prompts during rewinding.
+  Figure 1: VPT is identified to be preferable in 3 out of 4 transfer learning scenarios when downstream data is limited.
 </p>
 
 ## Environment settings
@@ -148,6 +148,15 @@ The hyperparameter values used (prompt length for VPT / reduction rate for Adapt
 ## Citation
 
 If you find our work helpful in your research, please consider the following citations:
+
+```
+@inproceedings{jia2022visual,
+  title={Visual prompt tuning},
+  author={Jia, Menglin and Tang, Luming and Chen, Bor-Chun and Cardie, Claire and Belongie, Serge and Hariharan, Bharath and Lim, Ser-Nam},
+  booktitle={European Conference on Computer Vision (ECCV)},
+  year={2022}
+}
+```
 
 ```
 @inproceedings{han20232vpt,
