@@ -147,14 +147,23 @@ The hyperparameter values used (prompt length for VPT / reduction rate for Adapt
 
 ## Citation
 
-If you find our work helpful in your research, please cite it as:
+If you find our work helpful in your research, please consider the following citations:
 
 ```
-@inproceedings{cheng2023e2vpt,
+@inproceedings{han20232vpt,
   title={E2VPT: An Effective and Efficient Approach for Visual Prompt Tuning},
-  author={Cheng, Han and Qifan, Wang and Yiming, Cui and Zhiwen, Cao and Wenguan, Wang and Siyuan, Qi and Dongfang, Liu},
+  author={Han, Cheng and Wang, Qifan and Cui, Yiming and Cao, Zhiwen and Wang, Wenguan and Qi, Siyuan and Liu, Dongfang},
   booktitle={International Conference on Computer Vision (ICCV)},
   year={2023}
+}
+```
+
+```
+@inproceedings{han2024facing,
+  title={Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?},
+  author={Han, Cheng and Wang, Qifan and Cui, Yiming and Wang, Wenguan and Huang, Lifu and Qi, Siyuan and Liu, Dongfang},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2024}
 }
 ```
 
