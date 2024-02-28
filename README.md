@@ -1,7 +1,7 @@
 # Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?
 ------
 
-This repository contains the official PyTorch implementation for Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning? 
+This repository contains the official PyTorch implementation for "Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?" 
 
 As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
 
@@ -42,7 +42,7 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 - `src/solver`: optimization, losses and learning rate schedules.  
 - `src/utils`: helper functions for io, loggings, training, visualizations. 
 - 👉`train.py`: call this one for training and eval a model with a specified transfer type.
-- 👉`tune_fgvc.py`: call this one for tuning learning rate and weight decay for a model with a specified transfer type. We used this script for FGVC tasks.
+<!-- - 👉`tune_fgvc.py`: call this one for tuning learning rate and weight decay for a model with a specified transfer type. We used this script for FGVC tasks. -->
 - 👉`tune_vtab.py`: call this one for tuning vtab tasks: use 800/200 split to find the best lr and wd, and use the best lr/wd for the final runs
 - `launch.py`: contains functions used to launch the job.
 
@@ -52,13 +52,13 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 
 - VPT related:
   - MODEL.PROMPT.NUM_TOKENS: prompt length
-  - MODEL.PROMPT.DEEP: deep or shallow prompt
+  - MODEL.PROMPT.DEEP: deep or shallow prompt (By default, we use deep prompt)
 - Fine-tuning method specification:
   - MODEL.TRANSFER_TYPE
 - Vision backbones:
   - DATA.FEATURE: specify which representation to use
-  - MODEL.TYPE: the general backbone type, e.g., "vit" or "swin"
-  - MODEL.MODEL_ROOT: folder with pre-trained model checkpoints
+  - MODEL.TYPE: "vit" by default
+  - MODEL.MODEL_ROOT: see **Pre-trained Model Preperation**
 - Optimization related: 
   - SOLVER.BASE_LR: learning rate for the experiment
   - SOLVER.WEIGHT_DECAY: weight decay value for the experiment
