@@ -72,25 +72,13 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
   - OUTPUT_DIR: output dir of the final model and logs
   - MODEL.SAVE_CKPT: if set to `True`, will save model ckpts and final output of both val and test set
 
-### Datasets preperation:
-
-- Fine-Grained Visual Classification tasks (FGVC): The datasets can be downloaded following the official links. We split the training data if the public validation set is not available. The splitted dataset can be found here: [Dropbox](https://cornell.box.com/v/vptfgvcsplits), [Google Drive](https://drive.google.com/drive/folders/1mnvxTkYxmOr2W9QjcgS64UBpoJ4UmKaM?usp=sharing). 
-
-  - [CUB200 2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)
-
-  - [NABirds](http://info.allaboutbirds.org/nabirds/)
-
-  - [Oxford Flowers](https://www.robots.ox.ac.uk/~vgg/data/flowers/)
-
-  - [Stanford Dogs](http://vision.stanford.edu/aditya86/ImageNetDogs/main.html)
-
-  - [Stanford Cars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html)
+### Dataset preperation:
 
 - [Visual Task Adaptation Benchmark](https://google-research.github.io/task_adaptation/) (VTAB): see [`VTAB_SETUP.md`](https://github.com/KMnP/vpt/blob/main/VTAB_SETUP.md) for detailed instructions and tips.
 
 ### Pre-trained model preperation
 
-Download and place the pre-trained Transformer-based backbones to `MODEL.MODEL_ROOT` (ConvNeXt-Base and ResNet50 would be automatically downloaded via the links in the code). Note that you also need to rename the downloaded ViT-B/16 ckpt from `ViT-B_16.npz` to `imagenet21k_ViT-B_16.npz`.
+Download and place the pre-trained Transformer-based backbone to `MODEL.MODEL_ROOT`. Note that you also need to rename the downloaded ViT-B/16 ckpt from `ViT-B_16.npz` to `imagenet21k_ViT-B_16.npz`.
 
 <table><tbody>
 <!-- START TABLE -->
@@ -105,7 +93,7 @@ Download and place the pre-trained Transformer-based backbones to `MODEL.MODEL_R
 <td align="center"><a href="https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz">link</a></td>
 <td align="center"><tt>d9715d</tt></td>
 </tr>
-<tr><td align="left">ViT-B/16</td>
+<!-- <tr><td align="left">ViT-B/16</td>
 <td align="center">MoCo v3</td>
 <td align="center"><a href="https://dl.fbaipublicfiles.com/moco-v3/vit-b-300ep/linear-vit-b-300ep.pth.tar">link</a></td>
 <td align="center"><tt>8f39ce</tt></td>
@@ -128,13 +116,17 @@ Download and place the pre-trained Transformer-based backbones to `MODEL.MODEL_R
 <tr><td align="left">ResNet-50</td>
 <td align="center">Supervised</td>
 <td align="center"><a href="https://pytorch.org/vision/stable/models.html">link</a></td>
-<td align="center"><tt>-</tt></td>
+<td align="center"><tt>-</tt></td> -->
 </tr>
 </tbody></table>
 
 ### Hyperparameters for experiments in paper
 
 The hyperparameter values used (prompt length for VPT / reduction rate for Adapters, base learning rate, weight decay values) are strictly followed the ones in VPT Table 1-2, Fig. 3-4, Table 4-5, which can be found here [Dropbox](https://cornell.box.com/s/lv10kptgyrm8uxb6v6ctugrhao24rs2z) / [Google Drive](https://drive.google.com/drive/folders/1ldhqkXelHDXq4bG7qpKn5YEfU6sRehJH?usp=sharing). We express our gratitude to the authors of VPT for providing the detailed hyperparameters.
+
+### Examples of running the code
+
+Coming soon! Stay tuned!
 
 ## Citation
 
