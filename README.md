@@ -131,11 +131,12 @@ Details coming soon, will update the code gradually. Stay tuned!
 - Dataset capacity:
   - When changing the dataset capacity, we keep the scale 800/200 = 4:1, but change the total number for larger or smaller value. Specifically, you can manually change them in `src/data/vtab_datasets/specific-dataset` for each task.
 
-- Visualization (all example with dataset Diabetic Retinopathy):
+- Visualization (all examples with dataset Diabetic Retinopathy):
   - Example on full finetuning: 
   `CUDA_VISIBLE_DEVICES=0 PORT=30000 python tune_vtab_AS.py --train-type "finetune" --config-file configs/finetune/VTAB-1k/Specialized/diabetic_retinopathy_detection.yaml OUTPUT_DIR "Retino_vis_finetune" DATA.BATCH_SIZE "128" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
   - Example on prompt tuning: 
   `CUDA_VISIBLE_DEVICES=1 PORT=20000 python tune_vtab_AS.py --train-type "prompt" --config-file configs/prompt/prompt_vpt/Specialized/diabetic_retinopathy_detection.yaml MODEL.PROMPT.DEEP "True" MODEL.PROMPT.NUM_TOKENS "10" MODEL.PROMPT.DROPOUT "0.1" OUTPUT_DIR "Retino_vis_prompt" DATA.BATCH_SIZE "64" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
+
 
 ## Citation
 
