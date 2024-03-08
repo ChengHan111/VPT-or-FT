@@ -35,7 +35,7 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 
     * 👉`src/models/vit_prompt`: <u>a folder contains the same backbones in `vit_backbones` folder,</u> specified for VPT. This folder should contain the same file names as those in  `vit_backbones`
 
-    * 👉 `src/models/vit_models.py`: <u>main model for transformer-based models</u> ❗️Note❗️: Current version only support ViT, Swin and ViT with mae, moco-v3
+    * 👉 `src/models/vit_models.py`: <u>main model for transformer-based models</u>
 
     * `src/models/build_model.py`: main action here to utilize the config and build the model to train / eval.
 
@@ -43,7 +43,7 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 - `src/utils`: helper functions for io, loggings, training, visualizations. 
 - 👉`train.py`: call this one for training and eval a model with a specified transfer type.
 <!-- - 👉`tune_fgvc.py`: call this one for tuning learning rate and weight decay for a model with a specified transfer type. We used this script for FGVC tasks. -->
-- 👉`tune_vtab.py`: call this one for tuning vtab tasks: use 800/200 split to find the best lr and wd, and use the best lr/wd for the final runs
+- 👉`tune_vtab.py`: call this one for tuning vtab tasks: use 800/200 split to find the best lr and wd, and use the best lr/wd for the final runs (Note that when considering dataset capacity, we keep the scale 800/200 = 4:1, but change the total number for larger or smaller value).
 - `launch.py`: contains functions used to launch the job.
 
 ## Experiments
@@ -51,7 +51,7 @@ I build the code for this work based on our previous work -- [E2VPT](https://git
 ### Key configs:
 
 - VPT related:
-  - MODEL.PROMPT.NUM_TOKENS: prompt length
+  - MODEL.PROMPT.NUM_TOKENS: prompt length, please see VPT for detailed prompt length for each task
   - MODEL.PROMPT.DEEP: deep or shallow prompt (By default, we use deep prompt)
 - Fine-tuning method specification:
   - MODEL.TRANSFER_TYPE
