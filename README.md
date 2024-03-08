@@ -1,9 +1,9 @@
 # Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?
 ------
 
-This repository contains the official PyTorch implementation for "Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?" 
+This repository contains the official PyTorch implementation for "Facing the Elephant in the Room: Visual Prompt Tuning or Full Finetuning?" Our paper is accepted by ICLR 2024. The ArXiv version is available [here](https://arxiv.org/pdf/2401.12902.pdf). The OpenReview version is available [here](https://openreview.net/pdf?id=bJx4iOIOxn).
 
-As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
+Abstract: As the scale of vision models continues to grow, the emergence of Visual Prompt Tuning (VPT) as a parameter-efficient transfer learning technique has gained attention due to its superior performance compared to traditional full-finetuning. However, the conditions favoring VPT (the “when”) and the underlying rationale (the “why”) remain unclear. In this paper, we conduct a comprehensive analysis across 19 distinct datasets and tasks. To understand the “when” aspect, we identify the scenarios where VPT proves favorable by two dimensions: task objectives and data distributions. We find that VPT is preferrable when there is 1. a substantial disparity between the original and the downstream task objectives (e.g., transitioning from classification to counting), or 2. a similarity in data distributions between the two tasks (e.g., both involve natural images). In exploring the “why” dimension, our results indicate VPT’s success cannot be attributed solely to overfitting and optimization considerations. The unique way VPT preserves original features and adds parameters appears to be a pivotal factor. Our study provides insights into VPT’s mechanisms, and offers guidance for its optimal utilization.
 
 <div align="center">
   <img src="./imgs/Task_dimensions.JPG" width="50%">
@@ -133,10 +133,15 @@ Details coming soon, will update the code gradually. Stay tuned!
 
 - Visualization (all examples with dataset Diabetic Retinopathy):
   - Example on full finetuning: 
-  `CUDA_VISIBLE_DEVICES=0 PORT=30000 python tune_vtab_AS.py --train-type "finetune" --config-file configs/finetune/VTAB-1k/Specialized/diabetic_retinopathy_detection.yaml OUTPUT_DIR "Retino_vis_finetune" DATA.BATCH_SIZE "128" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
+  `python tune_vtab_AS.py --train-type "finetune" --config-file configs/finetune/VTAB-1k/Specialized/diabetic_retinopathy_detection.yaml OUTPUT_DIR "Retino_vis_finetune" DATA.BATCH_SIZE "128" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
   - Example on prompt tuning: 
-  `CUDA_VISIBLE_DEVICES=1 PORT=20000 python tune_vtab_AS.py --train-type "prompt" --config-file configs/prompt/prompt_vpt/Specialized/diabetic_retinopathy_detection.yaml MODEL.PROMPT.DEEP "True" MODEL.PROMPT.NUM_TOKENS "10" MODEL.PROMPT.DROPOUT "0.1" OUTPUT_DIR "Retino_vis_prompt" DATA.BATCH_SIZE "64" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
+  `python tune_vtab_AS.py --train-type "prompt" --config-file configs/prompt/prompt_vpt/Specialized/diabetic_retinopathy_detection.yaml MODEL.PROMPT.DEEP "True" MODEL.PROMPT.NUM_TOKENS "10" MODEL.PROMPT.DROPOUT "0.1" OUTPUT_DIR "Retino_vis_prompt" DATA.BATCH_SIZE "64" ATTRIBUTION_TYPE "general" ATTRIBUTION_INTEGRATED_METHOD "pytorch_gradcam"`
 
+- Different training strategies (all examples with dataset CIFAR-100):
+  - FT: `python tune_vtab.py --train-type "finetune" --config-file configs/finetune/VTAB-1k/Natural/cifar100.yaml OUTPUT_DIR "ft_origin" DATA.BATCH_SIZE "128"`
+  - VPT: `python tune_vtab.py --train-type "prompt" --config-file configs/prompt/prompt_vpt/Natural/cifar100_forVPT.yaml MODEL.PROMPT.DEEP "True" MODEL.PROMPT.NUM_TOKENS "10" MODEL.PROMPT.DROPOUT "0.1" OUTPUT_DIR "pt_origin" DATA.BATCH_SIZE "64"`
+  - Mixed: `python tune_vtab.py --train-type "prompt" --config-file configs/prompt/prompt_vpt/Natural/cifar100_forVPT.yaml MODEL.PROMPT.DEEP "True" MODEL.PROMPT.NUM_TOKENS "10" MODEL.PROMPT.DROPOUT "0.1" OUTPUT_DIR "ft_pt_mixed" DATA.BATCH_SIZE "64" MODEL.PROMPT.FT_PT_MIXED "True"`
+  - FT-then-PT: Simply run the full finetuning first, and then run the prompt tuning.
 
 ## Citation
 
