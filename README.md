@@ -126,7 +126,10 @@ The hyperparameter values used (prompt length for VPT / reduction rate for Adapt
 
 ### Examples of running the code
 
-Coming soon! Stay tuned!
+Details coming soon, will update the code gradually. Stay tuned!
+
+- Dataset capacity:
+  - When changing the dataset capacity, we keep the scale 800/200 = 4:1, but change the total number for larger or smaller value. Specifically, you can manually change them in `src/data/vtab_datasets/specific-dataset` for each task.
 
 ## Citation
 

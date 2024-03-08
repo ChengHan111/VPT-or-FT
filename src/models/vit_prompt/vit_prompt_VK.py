@@ -95,7 +95,7 @@ class PromptedTransformer_Prompt_VK(Transformer_changeVK):
             if self.p_vk_config.DEEP_P:  # noqa
 
                 total_d_layer = config.transformer["num_layers"]-1
-                # 初始化是一起生成的
+                # 
                 self.deep_prompt_embeddings = nn.Parameter(torch.zeros(
                     total_d_layer, num_tokens_P, prompt_dim))
                 # print('self.deep_prompt_embeddings.shape', self.deep_prompt_embeddings.shape) # torch.Size([11, 10, 768])
@@ -183,7 +183,7 @@ class PromptedTransformer_Prompt_VK(Transformer_changeVK):
                     deep_prompt_emb = self.prompt_dropout(self.prompt_proj(
                         self.deep_prompt_embeddings[i-1]).expand(B, -1, -1))
                     
-                    # 层数是通过每一层这样加进去体现的
+                    # 
                     if self.p_vk_config.MASK_CLS_TOKEN is True: 
                         if self.p_vk_config.CLS_TOKEN_MASK_PIECES is True:
                             # print(self.soft_tokens_pieces_mask_cls_token.repeat((1,self.soft_token_chunks_num_cls_token)).repeat(B, 1, 1).shape)
@@ -209,7 +209,7 @@ class PromptedTransformer_Prompt_VK(Transformer_changeVK):
         return encoded, attn_weights
 
     def forward(self, x):
-        # this is the default version: 这样的写法是 第一层是单独加进去的 后面层是有deep再加入的
+        # this is the default version
         embedding_output = self.incorporate_prompt(x)
 
         if self.p_vk_config.DEEP_P:
